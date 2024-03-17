@@ -29,12 +29,15 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         $this->configurePermissions();
 
+        // If teams, use:
         Jetstream::createTeamsUsing(CreateTeam::class);
         Jetstream::updateTeamNamesUsing(UpdateTeamName::class);
         Jetstream::addTeamMembersUsing(AddTeamMember::class);
         Jetstream::inviteTeamMembersUsing(InviteTeamMember::class);
         Jetstream::removeTeamMembersUsing(RemoveTeamMember::class);
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
+        // End of if teams
+
         Jetstream::deleteUsersUsing(DeleteUser::class);
     }
 
@@ -43,6 +46,7 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     protected function configurePermissions(): void
     {
+        // If teams, use:
         Jetstream::defaultApiTokenPermissions(['read']);
 
         Jetstream::role('admin', 'Administrator', [
@@ -57,5 +61,15 @@ class JetstreamServiceProvider extends ServiceProvider
             'create',
             'update',
         ])->description('Editor users have the ability to read, create, and update.');
+
+        // If not teams, use:
+        // Jetstream::defaultApiTokenPermissions(['read']);
+
+        // Jetstream::permissions([
+        //     'create',
+        //     'read',
+        //     'update',
+        //     'delete',
+        // ]);
     }
 }
