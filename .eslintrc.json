@@ -1,0 +1,81 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "vue/setup-compiler-macros": true
+  },
+  "extends": [
+    "plugin:import/recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@stylistic/recommended-extends"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": {
+      "ts": "@typescript-eslint/parser"
+    },
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import",
+    "vue",
+    "@typescript-eslint",
+    "@stylistic"
+  ],
+  "ignorePatterns": ["**/*.json"],
+  "rules": {
+    "camelcase": "off",
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "ts": "never"
+    }],
+    "import/order": ["error", {
+      "pathGroups": [{
+        "pattern": "@/**/*.vue",
+        "group": "object"
+      }]
+    }],
+    "no-underscore-dangle": 0,
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    "vue/multi-word-component-names": 0,
+    "vue/no-multiple-template-root": 0,
+    "vue/one-component-per-file": 0,
+    "@stylistic/arrow-parens": ["error", "always"],
+    "@stylistic/brace-style": ["error", "stroustrup", { "allowSingleLine": false }],
+    "@stylistic/indent": ["error", 2, {
+      "SwitchCase": 0
+    }],
+    "@stylistic/function-call-spacing": ["error", "never"],
+    "@stylistic/max-len": ["error", { "code": 80 }],
+    "@stylistic/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "semi",
+        "requireLast": true
+      },
+      "singleline": {
+        "delimiter": "semi",
+        "requireLast": false
+      }
+    }],
+    "@stylistic/no-extra-parents": 0,
+    "@stylistic/object-curly-newline": ["error", { "multiline": true }],
+    "@stylistic/quote-props": ["error", "as-needed"],
+    "@stylistic/semi": ["error", "always"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.vue"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {},
+      "alias": { "map": [["@", "./resources/js"], ["ziggy-js", "./vendor/tightenco/ziggy"]] },
+      "node": { "extensions": [".js", ".vue", ".ts"] }
+    }
+  }
+}

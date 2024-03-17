@@ -1,0 +1,90 @@
+name: Deploy
+
+# Required action secrets:
+# - SSH_HOST: ip address or host
+# - SSH_USERNAME: username
+# - SSH_PRIVATE_KEY: -----BEGIN OPENSSH PRIVATE KEY...
+
+on:
+  # push:
+  #   branches: [ main ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  # workflow_dispatch:
+
+# TODO: Replace /var/www/project-name with your actual project directory!
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: '8.2'
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+        check-latest: true
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Install NPM dependencies
+      run: npm install
+    - name: Compile assets for production
+      run: npm run build
+    - name: Toggling maintenance mode
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
+        script: |
+          cd /var/www/project-name/
+          php artisan down --refresh=15
+    - name: Pull backend updates
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
+        script: |
+          cd /var/www/project-name/
+          git reset --hard HEAD
+          git pull origin main
+          composer install --optimize-autoloader --no-dev
+          php artisan optimize
+          php artisan queue:restart
+    - name: Clear old Vite build
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
+        script: |
+          cd /var/www/project-name/
+          rm -rf ./public/build/*
+    - name: Deploying new build
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
+        source: "public/build/*"
+        target: "/var/www/project-name"
+    - name: Toggling maintenance mode
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        username: ${{ secrets.SSH_USERNAME }}
+        script: |
+          cd /var/www/project-name/
+          php artisan up

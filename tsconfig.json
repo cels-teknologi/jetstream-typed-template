@@ -1,0 +1,18 @@
+{
+    "extends": "@vue/tsconfig/tsconfig.dom.json",
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "jsx": "preserve",
+        "module": "ES2022",
+        "moduleResolution": "Bundler",
+        "paths": {
+            "@/*": ["resources/js/*"],
+            "ziggy-js": ["./vendor/tightenco/ziggy"]
+        },
+        "types": ["vite/client"]
+    },
+    "include": ["resources/js/**/*.ts", "resources/js/**/*.vue"],
+    "exclude": ["node_modules", "public"]
+}
