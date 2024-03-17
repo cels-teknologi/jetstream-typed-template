@@ -16,7 +16,8 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use HasTeams;
+    // TODO: if Jetstream teams
+    use HasTeams; 
     use Notifiable;
     use TwoFactorAuthenticatable;
 
