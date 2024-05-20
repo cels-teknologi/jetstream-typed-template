@@ -1,8 +1,9 @@
-import '../css/app.pcss';
-
 import { createApp, defineAsyncComponent, h, type DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
+import { ziggy } from './helpers';
 import AppVue from './App.vue';
+
+ziggy();
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -12,9 +13,13 @@ createInertiaApp({
     const c = defineAsyncComponent({
       loader: async () => {
         const globs = import.meta.glob<DefineComponent>('./Pages/**/*.vue');
-        const componentDef = (
-          await globs[`./Pages/${name}.vue`]()
-        ).default as DefineComponent;
+
+        let page = `./Pages/${name}.vue`;
+        if (!globs[page]) {
+          page = './Pages/Errors/501.vue';
+        }
+
+        const componentDef = (await globs[page]()).default as DefineComponent;
         componentDef.inheritAttrs = false;
         return componentDef;
       },
@@ -29,5 +34,8 @@ createInertiaApp({
     app.mount(el);
     return app;
   },
-  progress: { color: '#006b59' },
+  progress: {
+    color: '#006b59',
+    includeCSS: false,
+  },
 });

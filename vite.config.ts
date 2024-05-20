@@ -1,12 +1,18 @@
 import path from 'node:path';
+import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+  // server: {
+  //   hmr: {
+  //     host: 'localhost',
+  //   },
+  // },
+  // build: { rollupOptions: { output: { preserveModules: true } } },
   plugins: [
     laravel({
-      input: 'resources/js/app.ts',
+      input: ['resources/js/app.ts', 'resources/css/app.pcss'],
       refresh: true,
     }),
     vue({

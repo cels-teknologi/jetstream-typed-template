@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/vue3';
 import ActionSection from '@/Components/ActionSection.vue';
 import DangerButton from '@/Components/DangerButton.vue';

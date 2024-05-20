@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { route } from 'ziggy-js';
 import { Link, router, useForm } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';

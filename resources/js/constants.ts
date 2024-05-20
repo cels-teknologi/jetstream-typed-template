@@ -1,8 +1,6 @@
 interface Constants {
-  withdrawals: {
-    min: string;
-    max: string;
-  };
+  // @todo: implement this
+  [k: string]: unknown;
 }
 
 declare const constants: Constants;

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Project\Constants;
+use Cels\Utilities\Utility as CelsUtility;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +17,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        /**
+         * Uncomment the following line if you wish to enable CSP.
+         * By default, the policy is not compatible with:
+         *   - Cloudflare Rocket Loader
+         *   - Cloudflare Fonts
+         */
+        // CelsUtility::enableCSP();
     }
 
     /**
@@ -25,8 +32,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        Blade::directive('constants', fn ($_) => (
-            "<?php echo (string) app('".Constants::class."') ?>"
+        Blade::directive('constants', fn ($_) => sprintf(
+            "<?php echo (string) app('%s')() ?>",
+            Constants::class,
         ));
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(600)->by($request->user()?->id ?: $request->ip());

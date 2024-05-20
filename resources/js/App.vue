@@ -1,16 +1,19 @@
-<script setup>
+<script setup lang="ts">
 /**
  * App.vue - The highest level SPA component.
  * (c) Cels Teknologi Indonesia
  */
 
-// import AppLayout from '@/Layouts/AppLayout.vue';
+import { provide } from 'vue';
+import { fontawesome, FAStyles } from '@/helpers';
+import { Keys } from '@/injections';
+
+provide(Keys.FontAwesome, fontawesome([
+  FAStyles.Solid,
+  FAStyles.Brands,
+]));
 </script>
 
 <template>
-  <!-- <AppLayout v-else-if="$page.props.auth?.user">
-    <slot />
-  </AppLayout> -->
-
   <slot />
 </template>

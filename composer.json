@@ -1,23 +1,13 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Jetstream with Typescript skeleton powered by Laravel 11.",
+    "keywords": ["jetstream", "laravel", "template"],
     "license": "MIT",
-    "repositories": [
-        {
-            "url": "https://github.com/cels-teknologi/aegis-laravel",
-            "type": "vcs"
-        },
-        {
-            "url": "https://github.com/cels-teknologi/laravel-utilities",
-            "type": "vcs"
-        }
-    ],
     "require": {
         "php": "^8.2",
-        "cels-teknologi/aegis-laravel": "dev-main",
-        "cels-teknologi/laravel-utilities": "dev-main",
+        "cels-teknologi/aegis-laravel": "^1.0",
+        "cels-teknologi/laravel-utilities": "^1.0",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.0",

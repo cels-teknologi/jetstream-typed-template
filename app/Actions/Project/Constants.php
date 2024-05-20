@@ -2,7 +2,9 @@
 
 namespace App\Actions\Project;
 
+use Cels\Utilities\CSP\CSP;
 use Illuminate\Support\Js;
+use Stringable;
 
 /**
  * This is the constants provider class.
@@ -10,20 +12,14 @@ use Illuminate\Support\Js;
  * This class **MUST** be used for all constants used in the project.
  * Please also update the constants module when modifying this class.
  *
+ * @todo  fetch dynamic constants from database
+ *
  * @see  resources/js/constants.ts
  */
-final class Constants implements \Stringable
+final class Constants implements Stringable
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function dump(): array
     {
-        // Put your constants here to make it accessible from
-        // window.constants & import { varName } from '@/constants'
-
         return [
             //
         ];
@@ -40,10 +36,27 @@ final class Constants implements \Stringable
      * Change the variable name from window.constants to something else
      * if it was used by some other library / your code.
      */
+    public function __invoke(string $var = 'constants'): string
+    {
+        $nonce = '';
+        if (CSP::$enabled) {
+            $nonce = sprintf('nonce="%s"', CSP::getSharedNonce());
+        }
+
+        return sprintf(
+            sprintf(
+                '<script type="text/javascript" %%s>const %s=%%s; window.%s=%s;</script>',
+                $var,
+                $var,
+                $var,
+            ),
+            $nonce,
+            $this->toScript(),
+        );
+    }
+
     public function __toString(): string
     {
-        return <<<HTML
-<script type="text/javascript">window.constants={$this->toScript()};</script>
-HTML;
+        return $this->__invoke();
     }
 }

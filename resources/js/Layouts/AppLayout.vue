@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { route } from 'ziggy-js';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';

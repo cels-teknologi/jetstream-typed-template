@@ -31,9 +31,19 @@
       "ts": "never"
     }],
     "import/order": ["error", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
       "pathGroups": [{
+        "pattern": "@/Components/*",
+        "group": "object"
+      }, {
         "pattern": "@/**/*.vue",
         "group": "object"
+      }, {
+        "pattern": "./**/*.vue",
+        "group": "object"
+      }, {
+        "pattern": "ziggy-js",
+        "group": "external"
       }]
     }],
     "no-underscore-dangle": 0,

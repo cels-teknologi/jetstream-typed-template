@@ -2,22 +2,22 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "npm run ziggy && npm run type-check && vite build",
-        "type-check": "vue-tsc --noEmit",
-        "lint": "eslint .\\resources\\js\\**\\* --fix",
-        "lint-check": "eslint .\\resources\\js\\**\\*",
-        "ziggy": "composer install && php artisan ziggy:generate --types-only"
+        "dev": "npm run ziggy && vite",
+        "build": "npm run type-check && vite build",
+        "type-check": "npm run ziggy && vue-tsc --noEmit",
+        "lint": "eslint .\\resources\\js\\**\\*",
+        "ziggy": "composer install && php artisan ziggy:generate --types"
     },
     "devDependencies": {
-        "@stylistic/eslint-plugin": "^1.6.2",
-        "@typescript-eslint/eslint-plugin": "^7.0.2",
-        "@typescript-eslint/parser": "^7.0.2",
-        "eslint": "^8.56.0",
+        "@stylistic/eslint-plugin": "^2.1.0",
+        "@types/node": "^20.12.12",
+        "@typescript-eslint/eslint-plugin": "^7.9.0",
+        "@typescript-eslint/parser": "^7.9.0",
+        "eslint": "^8.57.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-import-resolver-typescript": "^3.6.1",
-        "eslint-plugin-import": "^2.28.1",
-        "eslint-plugin-vue": "^9.21.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-vue": "^9.26.0",
         "vue-eslint-parser": "^9.4.2"
     },
     "dependencies": {
@@ -31,9 +31,9 @@
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.32",
         "tailwindcss": "^3.4.0",
-        "typescript": "^5.3.3",
-        "vite": "^5.1.4",
-        "vue": "^3.4.19",
-        "vue-tsc": "^1.8.27"
+        "typescript": "^5.4.5",
+        "vite": "^5.2",
+        "vue": "^3.4.27",
+        "vue-tsc": "^2.0.19"
     }
 }

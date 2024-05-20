@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { route } from 'ziggy-js';
 import { Head, useForm } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';

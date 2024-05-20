@@ -1,4 +1,5 @@
 <script setup>
+import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';

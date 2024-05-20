@@ -1,11 +1,7 @@
-import {
-  route as routeFn,
-  type Config,
-  type RouteName,
-  type RouteParams,
-} from 'ziggy-js';
+export { default as fontawesome, FAStyles } from './fontawesome';
+export { default as ziggy } from './ziggy';
 
-declare const Ziggy: Config;
+export const { locale: LOCALE } = (new Intl.NumberFormat()).resolvedOptions();
 
 export const capitalize = <T extends string>(s: T) => (
   s[0].toLocaleUpperCase() + s.slice(1)
@@ -74,10 +70,3 @@ export const only = (
   });
   return result;
 };
-
-export const route = <T extends RouteName>(
-  name: T,
-  params?: RouteParams<T>,
-  absolute: boolean = true,
-) => routeFn<T>(name, params, absolute, Ziggy);
-export const router = () => routeFn(undefined, undefined, undefined, Ziggy);
