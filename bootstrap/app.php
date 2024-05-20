@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
+        ], prepend: [
+            \Cels\Utilities\CSP\Middleware\AddCSPHeaders::class,
         ]);
 
         //
