@@ -18,12 +18,12 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         /**
-         * Uncomment the following line if you wish to enable CSP.
+         * Comment the following line if you wish to disable CSP.
          * By default, the policy is not compatible with:
          *   - Cloudflare Rocket Loader
          *   - Cloudflare Fonts
          */
-        // CelsUtility::enableCSP();
+        CelsUtility::enableCSP();
     }
 
     /**
