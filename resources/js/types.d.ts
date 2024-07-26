@@ -1,7 +1,33 @@
+type PageProps = import('@inertiajs/core').PageProps;
+interface AppPageProps extends PageProps {
+  jetstream: 1;
+  auth: { user: User };
+};
+
 type Numberish = bigint | number | string;
 type Dateable = Date | string;
-
 type EnumExample = import('@/enumerations/EnumExample').EnumExample;
+type ValidationErrors<T> = {
+  errors: { [_ in keyof T]?: string[] };
+  message: string;
+};
+interface PaginatedResource<T> {
+  data: T[];
+  links: {
+    first: string;
+    last: string;
+    next: string;
+    prev: string;
+  };
+  meta: {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    from: number;
+    to: number;
+    total: number;
+  };
+};
 
 interface Model {
   [key: string]: unknown;

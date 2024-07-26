@@ -11,13 +11,15 @@
     "devDependencies": {
         "@stylistic/eslint-plugin": "^2.1.0",
         "@types/node": "^20.12.12",
-        "@typescript-eslint/eslint-plugin": "^7.9.0",
-        "@typescript-eslint/parser": "^7.9.0",
+        "@types/nprogress": "^0.2.3",
+        "@typescript-eslint/eslint-plugin": "^7.11.0",
+        "@typescript-eslint/parser": "^7.11.0",
         "eslint": "^8.57.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-import-resolver-typescript": "^3.6.1",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-vue": "^9.26.0",
+        "typescript-eslint": "^7.11.0",
         "vue-eslint-parser": "^9.4.2"
     },
     "dependencies": {
@@ -27,13 +29,16 @@
         "@vitejs/plugin-vue": "^5.0.0",
         "@vue/tsconfig": "^0.5.1",
         "autoprefixer": "^10.4.16",
-        "axios": "^1.6.8",
         "laravel-vite-plugin": "^1.0",
+        "nprogress": "^0.2.0",
         "postcss": "^8.4.32",
         "tailwindcss": "^3.4.0",
         "typescript": "^5.4.5",
         "vite": "^5.2",
         "vue": "^3.4.27",
         "vue-tsc": "^2.0.19"
+    },
+    "resolutions": {
+        "rollup": "npm:@rollup/wasm-node"
     }
 }

@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { computed, ref, inject, watch } from 'vue';
-import spa from '@/spa';
+import { wrap as _w } from '@/helpers';
+import { InjectionKeys as K } from '@/vue-constants';
 
-const DEFAULT_STYLE = 'fa-sharp fa-light';
-const STYLES = ['fa-light', 'fa-solid', 'fa-brands'];
+const DEFAULT_STYLE = 'fa-duotone';
+const STYLES = [
+  'fa-solid',
+  'fa-regular',
+  'fa-light',
+  'fa-duotone',
+  'fa-brands',
+];
 
 const props = withDefaults(defineProps<{
   icon: string | string[];
@@ -11,13 +18,11 @@ const props = withDefaults(defineProps<{
 }>(), { iconClass: () => [] });
 
 const changed = ref(false);
-const ready = inject(spa.InjectionKeys.FontAwesome);
+const ready = inject(K.FontAwesome);
 const styled = computed(() => {
   const icon = Array.isArray(props.icon) ? props.icon : props.icon.split(' ');
   return STYLES.map((s) => icon.findIndex((v) => v === s) > -1).some((_) => _);
 });
-
-const _arr = (n: string | string[]) => Array.isArray(n) ? n : [n];
 
 watch(props, () => {
   changed.value = true;
@@ -34,8 +39,8 @@ watch(changed, (v) => {
     <span v-if="ready && !changed">
       <i
         :class="[
-          ..._arr(icon),
-          ..._arr(iconClass),
+          ..._w(icon),
+          ..._w(iconClass),
           { [DEFAULT_STYLE]: !styled },
         ]"
         aria-hidden="true"

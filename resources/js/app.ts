@@ -1,9 +1,6 @@
 import { createApp, defineAsyncComponent, h, type DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
-import { ziggy } from './helpers';
 import AppVue from './App.vue';
-
-ziggy();
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 

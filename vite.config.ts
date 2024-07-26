@@ -17,12 +17,19 @@ export default defineConfig({
     }),
     vue({
       template: {
+        compilerOptions: {
+          // WebAwesome elements support
+          isCustomElement: (tag) => tag.startsWith('wa-') || [
+            'your-custom-element',
+          ].includes(tag),
+        },
         transformAssetUrls: {
           base: null,
           includeAbsolute: false,
         },
       },
     }),
+    // VitePWA(),
   ],
   resolve: {
     alias: {

@@ -1,7 +1,6 @@
+export { default as fetch, toFormData, FetchError } from './fetch';
 export { default as fontawesome, FAStyles } from './fontawesome';
-export { default as ziggy } from './ziggy';
-
-export const { locale: LOCALE } = (new Intl.NumberFormat()).resolvedOptions();
+export { default as validation } from './validation';
 
 export const capitalize = <T extends string>(s: T) => (
   s[0].toLocaleUpperCase() + s.slice(1)
@@ -70,3 +69,5 @@ export const only = (
   });
   return result;
 };
+
+export const wrap = <T>(_: T | T[]) => Array.isArray(_) ? _ : [_];

@@ -6,9 +6,9 @@
 
 import { provide } from 'vue';
 import { fontawesome, FAStyles } from '@/helpers';
-import { Keys } from '@/injections';
+import { InjectionKeys as K } from '@/vue-constants';
 
-provide(Keys.FontAwesome, fontawesome([
+provide(K.FontAwesome, fontawesome([
   FAStyles.Solid,
   FAStyles.Brands,
 ]));
