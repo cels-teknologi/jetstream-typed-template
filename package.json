@@ -9,34 +9,34 @@
         "ziggy": "composer install && php artisan ziggy:generate --types"
     },
     "devDependencies": {
-        "@stylistic/eslint-plugin": "^2.1.0",
-        "@types/node": "^20.12.12",
+        "@stylistic/eslint-plugin": "^2.3.0",
+        "@types/node": "^20.14.12",
         "@types/nprogress": "^0.2.3",
-        "@typescript-eslint/eslint-plugin": "^7.11.0",
-        "@typescript-eslint/parser": "^7.11.0",
+        "@typescript-eslint/eslint-plugin": "^7.17.0",
+        "@typescript-eslint/parser": "^7.17.0",
         "eslint": "^8.57.0",
         "eslint-import-resolver-alias": "^1.1.2",
         "eslint-import-resolver-typescript": "^3.6.1",
         "eslint-plugin-import": "^2.29.1",
-        "eslint-plugin-vue": "^9.26.0",
-        "typescript-eslint": "^7.11.0",
-        "vue-eslint-parser": "^9.4.2"
+        "eslint-plugin-vue": "^9.27.0",
+        "typescript-eslint": "^7.17.0",
+        "vue-eslint-parser": "^9.4.3"
     },
     "dependencies": {
-        "@inertiajs/vue3": "^1.0.14",
+        "@inertiajs/vue3": "^1.2.0",
         "@tailwindcss/forms": "^0.5.7",
-        "@tailwindcss/typography": "^0.5.10",
-        "@vitejs/plugin-vue": "^5.0.0",
+        "@tailwindcss/typography": "^0.5.13",
+        "@vitejs/plugin-vue": "^5.1.0",
         "@vue/tsconfig": "^0.5.1",
-        "autoprefixer": "^10.4.16",
+        "autoprefixer": "^10.4.19",
         "laravel-vite-plugin": "^1.0",
         "nprogress": "^0.2.0",
-        "postcss": "^8.4.32",
-        "tailwindcss": "^3.4.0",
-        "typescript": "^5.4.5",
-        "vite": "^5.2",
-        "vue": "^3.4.27",
-        "vue-tsc": "^2.0.19"
+        "postcss": "^8.4.40",
+        "tailwindcss": "^3.4.7",
+        "typescript": "^5.5.4",
+        "vite": "^5.3",
+        "vue": "^3.4.34",
+        "vue-tsc": "^2.0.29"
     },
     "resolutions": {
         "rollup": "npm:@rollup/wasm-node"
