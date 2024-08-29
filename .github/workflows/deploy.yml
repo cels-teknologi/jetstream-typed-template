@@ -26,9 +26,9 @@ jobs:
       with:
         php-version: '8.2'
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '22'
         check-latest: true
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"

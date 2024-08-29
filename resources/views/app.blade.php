@@ -18,9 +18,6 @@
         <!-- Constants, see \App\Actions\Project\Constants -->
         @constants
 
-        <!-- Ziggy routes -->
-        @routes(nonce: \Cels\Utilities\CSP\CSP::getSharedNonce())
-
         <!-- Vite -->
         @vite([
             'resources/css/app.pcss',

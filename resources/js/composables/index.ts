@@ -4,6 +4,8 @@ export { default as useDebounce } from './useDebounce';
 
 export { default as useFilter } from './useFilter';
 
+export { default as useFontawesome, FAStyles } from './useFontawesome';
+
 export {
   default as usePagination,
   type Pagination,

@@ -2,6 +2,7 @@ type PageProps = import('@inertiajs/core').PageProps;
 interface AppPageProps extends PageProps {
   jetstream: 1;
   auth: { user: User };
+  ziggy: Omit<import('ziggy-js').Config, 'location'> & { location: string };
 };
 
 type Numberish = bigint | number | string;
